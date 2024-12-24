@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import io
 
 # Initialize InsightFace model
-model = FaceAnalysis(providers=['CPUExecutionProvider'])
+model = FaceAnalysis(providers=['CPUExecutionProvider'], root="main.py")
 model.prepare(ctx_id=0, det_size=(640, 640))
 
 # Streamlit App
