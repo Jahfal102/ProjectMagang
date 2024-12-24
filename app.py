@@ -5,14 +5,15 @@ from insightface.app import FaceAnalysis
 from sklearn.metrics.pairwise import cosine_similarity
 import os
 
-# Set the path for the model directory (modify this to a valid path on your system)
-model_dir = "main.py"  # Replace this with your model directory path
+# Specify the path where you saved the models
+# This path should be relative to your project or absolute
+model_dir = "models/arcface"  # Make sure this path points to the directory with the models
 
-# Ensure the model directory exists or create it
+# Ensure that the model directory exists (it should already contain the models after downloading)
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
-# Initialize InsightFace model with the specified model directory
+# Initialize the InsightFace model with the specified root for the models
 model = FaceAnalysis(providers=['CPUExecutionProvider'], root=model_dir)
 model.prepare(ctx_id=0, det_size=(640, 640))
 
