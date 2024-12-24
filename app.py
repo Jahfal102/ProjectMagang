@@ -49,14 +49,15 @@ if uploaded_profile_file is not None:
 
     # Perform face profiling
     faces = model.get(imageMat)
-    profiles = []
-    for face in faces:
-        profiles.append({
+    if faces:  # Check if at least one face is detected
+        face = faces[0]  # Take the first detected face
+        profile = {
             "Gender": "Male" if face.gender > 0.5 else "Female",
             "Age": int(face.age)
-        })
-
-    st.json(profiles)
+        }
+        st.json(profile)
+    else:
+        st.error("No face detected in the uploaded image.")
 
 # Face Similarity
 st.header("Face Similarity")
