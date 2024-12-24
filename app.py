@@ -3,10 +3,17 @@ import cv2
 import numpy as np
 from insightface.app import FaceAnalysis
 from sklearn.metrics.pairwise import cosine_similarity
-import io
+import os
 
-# Initialize InsightFace model
-model = FaceAnalysis(providers=['CPUExecutionProvider'], root="main.py")
+# Set the path for the model directory (modify this to a valid path on your system)
+model_dir = "main.py"  # Replace this with your model directory path
+
+# Ensure the model directory exists or create it
+if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
+
+# Initialize InsightFace model with the specified model directory
+model = FaceAnalysis(providers=['CPUExecutionProvider'], root=model_dir)
 model.prepare(ctx_id=0, det_size=(640, 640))
 
 # Streamlit App
