@@ -51,11 +51,9 @@ if uploaded_profile_file is not None:
     faces = model.get(imageMat)
     if faces:  # Check if at least one face is detected
         face = faces[0]  # Take the first detected face
-        profile = {
-            "Gender": "Male" if face.gender > 0.5 else "Female",
-            "Age": int(face.age)
-        }
-        st.json(profile)
+        gender = "Male" if face.gender > 0.5 else "Female"
+        age = int(face.age)
+        st.write(f"Gender: {gender}  Age: {age}")
     else:
         st.error("No face detected in the uploaded image.")
 
