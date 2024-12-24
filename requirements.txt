@@ -3,3 +3,4 @@ uvicorn
 opencv-python-headles
 insightface
 onnxruntime 
+streamlit
