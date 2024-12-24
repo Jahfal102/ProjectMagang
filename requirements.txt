@@ -1,6 +1,6 @@
 fastapi[standard]
 uvicorn
-opencv-python-headles
+opencv-python-headless
 insightface
 onnxruntime 
 streamlit==1.22.0
