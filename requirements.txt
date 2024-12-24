@@ -3,4 +3,4 @@ uvicorn
 opencv-python-headless
 insightface
 onnxruntime 
-streamlit==1.22.0
+streamlit
