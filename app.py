@@ -7,7 +7,7 @@ import os
 
 # Specify the path where you saved the models
 # This path should be relative to your project or absolute
-model_dir = "models/arcface"  # Make sure this path points to the directory with the models
+model_dir = "main.py"  # Make sure this path points to the directory with the models
 
 # Ensure that the model directory exists (it should already contain the models after downloading)
 if not os.path.exists(model_dir):
