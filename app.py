@@ -47,8 +47,12 @@ if uploaded_profile_file is not None:
     nparr = np.frombuffer(contents, np.uint8)
     imageMat = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
+    # Convert BGR to RGB for display
+    image_rgb = cv2.cvtColor(imageMat, cv2.COLOR_BGR2RGB)
+
     # Perform face profiling
     faces = model.get(imageMat)
+    st.image(image_rgb, caption="Uploaded Image", use_column_width=True)  # Display the image
     if faces:  # Check if at least one face is detected
         face = faces[0]  # Take the first detected face
         gender = "Male" if face.gender > 0.5 else "Female"
@@ -56,6 +60,7 @@ if uploaded_profile_file is not None:
         st.write(f"Gender: {gender}  Age: {age}")
     else:
         st.error("No face detected in the uploaded image.")
+
 
 # Face Similarity
 st.header("Face Similarity")
