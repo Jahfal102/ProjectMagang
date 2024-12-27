@@ -52,7 +52,7 @@ if uploaded_profile_file is not None:
 
     # Perform face profiling
     faces = model.get(imageMat)
-    st.image(image_rgb, caption="Uploaded Image", use_column_width=True)  # Display the image
+    st.image(image_rgb, caption="Uploaded Image", width=300)  # Display the image
     if faces:  # Check if at least one face is detected
         face = faces[0]  # Take the first detected face
         gender = "Male" if face.gender > 0.5 else "Female"
