@@ -66,16 +66,30 @@ if uploaded_profile_file is not None:
 st.header("Face Similarity")
 uploaded_file1 = st.file_uploader("Upload the first image", type=["jpg", "jpeg", "png"], key="similarity-image1")
 uploaded_file2 = st.file_uploader("Upload the second image", type=["jpg", "jpeg", "png"], key="similarity-image2")
+
 if uploaded_file1 and uploaded_file2:
     # Read and process the first image
     contents1 = uploaded_file1.read()
     nparr1 = np.frombuffer(contents1, np.uint8)
     imageMat1 = cv2.imdecode(nparr1, cv2.IMREAD_COLOR)
 
+    # Convert BGR to RGB for display
+    image_rgb1 = cv2.cvtColor(imageMat1, cv2.COLOR_BGR2RGB)
+
     # Read and process the second image
     contents2 = uploaded_file2.read()
     nparr2 = np.frombuffer(contents2, np.uint8)
     imageMat2 = cv2.imdecode(nparr2, cv2.IMREAD_COLOR)
+
+    # Convert BGR to RGB for display
+    image_rgb2 = cv2.cvtColor(imageMat2, cv2.COLOR_BGR2RGB)
+
+    # Display both images side by side
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(image_rgb1, caption="First Image", width=300)
+    with col2:
+        st.image(image_rgb2, caption="Second Image", width=300)
 
     # Perform face similarity check
     faces1 = model.get(imageMat1)
@@ -89,3 +103,4 @@ if uploaded_file1 and uploaded_file2:
         st.write(f"Similarity Score: {similarity_score:.2f}%")
     else:
         st.error("No face detected in one or both images.")
+
