@@ -61,7 +61,6 @@ if uploaded_profile_file is not None:
     else:
         st.error("No face detected in the uploaded image.")
 
-
 # Face Similarity
 st.header("Face Similarity")
 uploaded_file1 = st.file_uploader("Upload the first image", type=["jpg", "jpeg", "png"], key="similarity-image1")
