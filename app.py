@@ -5,17 +5,17 @@ from insightface.app import FaceAnalysis
 from sklearn.metrics.pairwise import cosine_similarity
 import os
 
-# Specify the path where you saved the models
-# This path should be relative to your project or absolute
-model_dir = "ProjectMagang/main.py"  # Make sure this path points to the directory with the models
+# Folder tempat model InsightFace disimpan
+model_dir = "ProjectMagang/main.py"
 
-# Ensure that the model directory exists (it should already contain the models after downloading)
+# Buat folder jika belum ada
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
-# Initialize the InsightFace model with the specified root for the models
+# Inisialisasi model InsightFace
 model = FaceAnalysis(providers=['CPUExecutionProvider'], root=model_dir)
 model.prepare(ctx_id=0, det_size=(640, 640))
+
 
 # Streamlit App
 st.title("Face Analysis Application")
